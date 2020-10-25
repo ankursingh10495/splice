@@ -1,0 +1,372 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Auction</title>
+        <meta name="description" content="" />
+        <meta name="keyword" content="" />
+        <link rel="shortcut icon" type="img/png" href="img/fav.png" />
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <!-- Login -->
+        <div class="container login-form">
+            <div class="modal fade" id="myModal1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <div class="modal-title text-center">Auction Email Alerts Sign Up ? </div>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="row login-top">
+                                <div class="col">
+                                    <form>
+                                        <div class="row form-group">
+                                            <div class="col-md-6 pt-4">
+                                                <input type="Password" id="fname" class="form-control"  placeholder="First Name" minlength="8" required>
+                                            </div>
+                                            <div class="col-md-6 pt-4">
+                                                <input type="Password" id="fname" class="form-control" placeholder="Last Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-12 pt-4">
+                                                <input type="text" id="fname" class="form-control" placeholder="Enter Email Adress" required>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group  pt-2">
+                                            <div class="col-md-12 text-center">
+                                                <input type="submit" class="ban-btn" value="Submit">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="login_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <div class="modal-title text-center">Login </div>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="row login-top">
+                                <div class="col">
+                                    <form id="login_form" role="form" method="post">
+                                        {% csrf_token %}
+                                        <div class="row form-group">
+                                            <div class="col-md-6 pt-4">
+                                                <input type="text" id="email" name="login_email" class="form-control"  placeholder="Email" required>
+                                            </div>
+                                            <div class="col-md-6 pt-4">
+                                                <input type="password" id="password" class="form-control" placeholder="Last Name" name="login_password" required>
+                                                <input type="hidden" name="login_user_type" id="login_user_type" value="VE">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row form-group  pt-2">
+                                            <div class="col-md-12 text-center">
+                                                <span class="ban-btn" id="login_submit">Submit</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login end -->
+        <!-- Login -->
+        <div class="container login-form">
+            <div class="modal fade" id="myModal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <div class="modal-title text-center">Register Form </div>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="row login-top">
+                                <div class="col">
+                                    <form id="regForm" role=form method="post">
+                                        {% csrf_token %}
+                                        <div class="tab regis-form">
+                                            <div class="row form-group">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="first_name" oninput="this.className = ''" placeholder="First Name" required="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="last_name" oninput="this.className = ''" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="email" oninput="this.className = ''" placeholder="Email Address">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" oninput="this.className = ''" name="username" placeholder="Comfirm Email Address">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" oninput="this.className = ''" minlength="8" name="password" placeholder="Password">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" oninput="this.className = ''" minlength="8" placeholder="Confirm Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab regis-form">
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" name="company" oninput="this.className = ''" placeholder="Company Name">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" name="mobile" oninput="this.className = ''"placeholder="Mobile No" required="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" name="phone_number" oninput="this.className = ''" placeholder="Telephone">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="address_line1" oninput="this.className = ''" placeholder="Address Lane 1">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="address_line2"  oninput="this.className = ''" placeholder="Address Lane 2">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" name="city" oninput="this.className = ''" placeholder="City">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" name="zip_code" oninput="this.className = ''" placeholder="Postal Zip">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group pt-3">
+                                                <div class="col-md-6">
+                                                    <select class="form-control" name="country">
+                                                        <option value="">---Country----</option>
+                                                        <option value="America">America</option>
+                                                        <option value="Germany">Germany</option>
+                                                        <option value="Australia">Australia</option>
+                                                        <option value="France">France</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" oninput="this.className = ''" name="state" placeholder="State">
+                                                    <input type="hidden" name="user_type" id="user_type" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="overflow:auto;" class="pt-5">
+                                            <div class="reg-btn">
+                                                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                            </div>
+                                        </div>
+                                        <!-- Circles which indicates the steps of the form: -->
+                                        <div style="text-align:center;margin-top:40px;">
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login end -->
+        <section class="tophead">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="social">
+                            <ul>
+                                <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href=""></a><i class="fa fa-linkedin" aria-hidden="true"></i></li>
+                                <li><a href=""></a><i class="fa fa-youtube-play" aria-hidden="true"></i></li>
+                                <li><a href=""><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 offset-4">
+                        <h5>Call us: <span>570-694-4002</span></h5>
+                    </div>
+                    <div class="col-md-1" data-toggle="modal" data-target="#login_modal"><img src="{% static 'img/msg-alert.png' %}" width="25px"></div>
+                    <div class="col-md-1" id="vendor_btn" data-toggle="modal" data-target="#myModal2"><button>Vendor</button></div>
+                    <div class="col-md-1" id="bidder_btn" data-toggle="modal" data-target="#myModal2"><button>Bidder</button></div>
+                </div>
+            </div>
+        </section>
+        <section class="menubar">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="index.html"><img src="{% static 'img/logo.png' %}"></a> 
+                </div>
+                <div class="col-md-7 offset-1 ">
+                    <!--  <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Auctons</a></li>
+                        <li><a href="">Location</a></li>
+                        <li><a href="">Guide</a></li>
+                        <li><a href="">Contact</a></li>
+                        </ul> -->
+                    <div id="main">
+                        <nav>
+                            <div class="nav-xbootstrap">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li>
+                                        <a href="javascript:void(0)">Auctions<span class="glyphicon glyphicon-chevron-down iconsize"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="general_auction.html">General Auctions</a></li>
+                                            <li><a href="">Electronic</a></li>
+                                            <li><a href="">Furniture</a></li>
+                                            <li><a href="">Automobile</a></li>
+                                            <li><a href="">General</a></li>
+                                            <li><a href="">Designer Dress</a></li>
+                                            <li><a href="">Property</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" >Locations<span class="glyphicon glyphicon-chevron-down iconsize"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Islington</a></li>
+                                            <li><a href="#">Lambeth</a></li>
+                                            <li><a href="#">Hounslow</a></li>
+                                            <li><a href="#">Greenwich</a></li>
+                                            <li><a href="#">Hackney</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="contact.html">Contacts</a></li>
+                                    <!--  <li><a href="https://xbootstrap.com">Premium Themes</a></li>
+                                        <li><a href="https://xbootstrap.com">Business</a></li> -->
+                                </ul>
+                            </div>
+                            <div class="nav-bg-xbootstrap">
+                                <div class="navbar-xbootstrap"> <span></span> <span></span> <span></span> </div>
+                                <a href="https://xbootstrap.com" class="title-mobile">xBOOTSTRAP.COM</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row form-group">
+                        <div class="col">
+                            <!--  <input type="" class="form-control" name="">
+                                <button><i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <footer class="foot">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{% static 'img/logo-white.png' %}">
+                        <p>Our stress-free finance department that can find financial solutions to save you money.</p>
+                    </div>
+                    <div class="col-md-3 featured">
+                        <h4>Featured Links</h4>
+                        <ul>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Products</a></li>
+                            <li><a href="">Services</a></li>
+                            <li><a href="">Auctions</a></li>
+                            <li><a href="">Guide & FAQ</a></li>
+                            <li><a href="">Term</a></li>
+                            <li><a href="">Privacy</a></li>
+                            <li><a href="">Sitemap </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 gal">
+                        <h4>Photo Gallery</h4>
+                        <ul>
+                            <li><img src="{% static 'img/latop.jpg' %}"></li>
+                            <li><img src="{% static 'img/mobile.jpg' %}"></li>
+                            <li><img src="{% static 'img/sofa.jpg' %}"></li>
+                            <li><img src="{% static 'img/car.jpg' %}"></li>
+                            <li><img src="{% static 'img/sofa.jpg' %}"></li>
+                            <li><img src="{% static 'img/latop.jpg' %}"></li>
+                            <li><img src="{% static 'img/mobile.jpg' %}"></li>
+                            <li><img src="{% static 'img/car.jpg' %}"></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 social">
+                        <h4>Social Network</h4>
+                        <ul>
+                            <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <div class="row form-group pt-5 subs">
+                            <div class="col">
+                                <h4>Subscribe Newsletter</h4>
+                                <input type="" class="form-control mt-3" name="" placeholder="Enter Email Address">
+                                <button><i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 copyright">
+                    <div class="col text-center">
+                        <h6>© Copyright 2020 </h6>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script  type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script   src="{% static 'js/slick.js' %}"></script>
+        {% block jsbody %}
+
+        {% endblock %}
+    </body>
+</html>
